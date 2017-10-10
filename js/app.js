@@ -37,7 +37,7 @@ Enemy.prototype.render = function() {
 // Now write your own player class
 // This class requires an update(), render() and
 // a handleInput() method.
-var player = function() { //initialize player
+var Player = function() { //initialize player
     this.initX = 200;
     this.initY = 370;
     this.x = this.initX;
@@ -45,23 +45,24 @@ var player = function() { //initialize player
     this.sprite = 'images/char-boy.png';
 };
 
-player.prototype.update = function() { //detects collision, if collides reset the game.
+Player.prototype.update = function() {
+  self=this //detects collision, if collides reset the game.
     allEnemies.forEach(function(enemy) {
-        if (player.x < enemy.x + 20 && player.x + 20 > enemy.x &&
-            player.y < enemy.y + 60 && player.y + 60 > enemy.y) {
-            player.x = player.initX;
-            player.y = player.initY;
+        if (self.x < self.x + 20 && self.x + 20 > enemy.x &&
+            self.y < enemy.y + 60 && self.y + 60 > self.y) {
+            self.x = self.initX;
+            self.y = self.initY;
             return;
             // The objects are touching
         }
     });
 };
 
-player.prototype.render = function() {
+Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y); //draw player
 };
 
-player.prototype.handleInput = function(key) { //takes appropriate action on key input
+Player.prototype.handleInput = function(key) { //takes appropriate action on key input
     if (key === 'left' && this.x != 0) {
         this.x = this.x - 100;
     } else if (key === 'right' && this.x != 400) {
@@ -84,7 +85,7 @@ player.prototype.handleInput = function(key) { //takes appropriate action on key
 
 
 // Now instantiate your objects.
-var player = new player(); // instanantiate player
+var player = new Player(); // instanantiate player
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
 var allEnemies = [];
