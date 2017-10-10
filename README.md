@@ -5,3 +5,6 @@
 3. use the navigation keys on keyboard to move the player.
 4. Player wins if he reaches water.
 5. Game resets if player collides with enemy.
+
+## Click on the link to play the game
+https://pratty1802.github.io/ArcadeGame/.
